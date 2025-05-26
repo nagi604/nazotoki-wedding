@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>問題3</title>
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById("answer").value.trim();
+      if (input === "あめ") {
+        window.location.href = "q4.html";
+      } else {
+        alert("不正解です");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>問題3</h1>
+  <img src="img3.jpg" alt="画像3" width="400"><br>
+  <input type="text" id="answer" placeholder="こたえ">
+  <button onclick="checkAnswer()">送信</button>
+</body>
+</html>
