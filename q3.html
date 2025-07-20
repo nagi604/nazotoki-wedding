@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Q3 謎解き</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
+      font-family: 'Noto Sans JP', sans-serif;
       background-image: url('haikei.jpg');
       background-size: cover;
       background-position: center;
@@ -21,12 +22,18 @@
       max-width: 90vw;
       width: 100%;
       max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.85);
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: left;
+      margin: 5vh auto;
+      padding: 24px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 2em 0 1em 0;
     }
 
     .header {
@@ -38,7 +45,6 @@
     .header img {
       width: 25%;
       height: auto;
-      border-radius: 8px;
     }
 
     .speech-bubble {
@@ -48,7 +54,8 @@
       border-radius: 10px;
       position: relative;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-      font-size: 1rem;
+      font-size: 0.95rem;
+      max-width: calc(75% - 1em);
     }
 
     .speech-bubble::before {
@@ -57,11 +64,14 @@
       left: -10px;
       top: 50%;
       transform: translateY(-50%);
-      width: 0;
-      height: 0;
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
       border-right: 10px solid #fff;
+    }
+
+    .question p {
+      font-size: 1rem;
+      margin-bottom: 0.8em;
     }
 
     label {
@@ -74,59 +84,77 @@
       width: 100%;
       padding: 10px;
       font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
       margin-top: 5px;
-      background-color: #eee;
-      box-sizing: border-box;
+      background-color: #f9f9f9;
       text-align: center;
+    }
+
+    input[type="text"]:focus {
+      border-color: #f4bc42;
+      background-color: #fff;
+      outline: none;
     }
 
     button {
       margin-top: 1.5em;
       padding: 12px 20px;
       font-size: 1rem;
-      background-color: #fff;
-      border: 2px solid #555;
+      background-color: #f4bc42;
+      color: #333;
+      border: none;
       border-radius: 8px;
       cursor: pointer;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #e0a821;
     }
 
     #result {
       margin-top: 1em;
       font-weight: bold;
-      text-align: center;
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- キャラクターと吹き出し -->
+
+    <!-- 吹き出しとキャラ -->
     <div class="header">
       <img src="RY.png" alt="キャラクター" />
       <div class="speech-bubble">
-        「プロポーズの日のデート場所」を知るには、<br>
-        「こもじのえいじを⑦⑧⑨」
+        <p>プロポーズの日のデート場所を知るには</p>
+        <p>「こもじのえいじを⑦⑧⑨」</p>
       </div>
     </div>
 
-    <p>最初に割り振られたひらがなの中で新郎、新婦の名前に含まれる文字を<br>
-    除いて文が成り立つように並び替えてください</p>
+    <!-- Q3タイトル -->
+    <div class="title">Q3</div>
 
+    <!-- 問題文 -->
+    <div class="question">
+      <p>最初に割り振られたひらがなの中で新郎、新婦の名前に含まれる文字を</p>
+      <p>除いて文が成り立つように並び替えてください</p>
+    </div>
+
+    <!-- 入力欄 -->
     <label for="a7">⑦</label>
-    <input type="text" id="a7" maxlength="1" placeholder="ひらがな一文字入力" />
+    <input type="text" id="a7" maxlength="1" placeholder="ひらがな1文字" />
 
     <label for="a8">⑧</label>
-    <input type="text" id="a8" maxlength="1" placeholder="ひらがな一文字入力" />
+    <input type="text" id="a8" maxlength="1" placeholder="ひらがな1文字" />
 
     <label for="a9">⑨</label>
-    <input type="text" id="a9" maxlength="1" placeholder="ひらがな一文字入力" />
+    <input type="text" id="a9" maxlength="1" placeholder="ひらがな1文字" />
 
+    <!-- ボタン -->
     <button onclick="checkAnswer()">解答ボタン</button>
     <div id="result"></div>
+
   </div>
 
   <script>

@@ -29,6 +29,13 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
+    .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 2em 0 1em 0;
+    }
+
     .header {
       display: flex;
       align-items: center;
@@ -40,7 +47,6 @@
       height: auto;
     }
 
-
     .speech-bubble {
       background-color: #fff;
       padding: 0.5em 1em;
@@ -48,7 +54,11 @@
       border-radius: 10px;
       position: relative;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-      font-size: 1rem;
+      font-size: 0.95rem;
+      max-width: calc(75% - 1em);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .speech-bubble::before {
@@ -122,10 +132,13 @@
     <div class="header">
       <img src="RY.png" alt="キャラクター" />
       <div class="speech-bubble">
-        「プロポーズの日のデート場所」を知るには、<br>
-        「①②③の④⑤⑥を⑦⑧⑨」
+        <p>プロポーズの日のデート場所を知るには</p>
+       <p>「①②③の④⑤⑥を⑦⑧⑨」</p>
       </div>
     </div>
+
+    <!-- Q1タイトル -->
+    <div class="title">Q1</div>
 
     <!-- 問題文 -->
     <div class="question">

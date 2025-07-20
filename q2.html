@@ -4,11 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Q2 謎解き</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
+      font-family: 'Noto Sans JP', sans-serif;
       background-image: url('haikei.jpg');
       background-size: cover;
       background-position: center;
@@ -21,12 +22,18 @@
       max-width: 90vw;
       width: 100%;
       max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.85);
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      text-align: left;
+      margin: 5vh auto;
+      padding: 24px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 2em 0 1em 0;
     }
 
     .header {
@@ -38,7 +45,6 @@
     .header img {
       width: 25%;
       height: auto;
-      border-radius: 8px;
     }
 
     .speech-bubble {
@@ -48,7 +54,8 @@
       border-radius: 10px;
       position: relative;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-      font-size: 1rem;
+      font-size: 0.95rem;
+      max-width: calc(75% - 1em);
     }
 
     .speech-bubble::before {
@@ -57,8 +64,6 @@
       left: -10px;
       top: 50%;
       transform: translateY(-50%);
-      width: 0;
-      height: 0;
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
       border-right: 10px solid #fff;
@@ -66,7 +71,7 @@
 
     .arrow-row {
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       margin: 2em 0;
       flex-wrap: wrap;
     }
@@ -86,7 +91,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: bold;
       color: #000;
       margin-bottom: 10px;
@@ -115,33 +120,43 @@
       margin-top: 2em;
       padding: 12px 20px;
       font-size: 1rem;
-      background-color: #fff;
-      border: 2px solid #555;
+      background-color: #f4bc42;
+      color: #333;
+      border: none;
       border-radius: 8px;
       cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #e0a821;
     }
 
     #result {
       margin-top: 1em;
       font-weight: bold;
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
   <div class="container">
 
-    <!-- キャラクターと吹き出し -->
+    <!-- 吹き出しとキャラ -->
     <div class="header">
       <img src="RY.png" alt="キャラクター" />
       <div class="speech-bubble">
-        「プロポーズの日のデート場所」を知るには、<br>
-        「こもじの④⑤⑥を⑦⑧⑨」
+        <p>プロポーズの日のデート場所を知るには</p>
+        <p>「こもじの④⑤⑥を⑦⑧⑨」</p>
       </div>
     </div>
 
+    <!-- Q2タイトル -->
+    <div class="title">Q2</div>
+
+    <!-- 問題文 -->
     <p>下の3つの矢印が示す言葉を解答してください</p>
 
-    <!-- 矢印横並び -->
     <div class="arrow-row">
       <div class="arrow-group">
         <div class="arrow">♪</div>
@@ -157,9 +172,9 @@
       </div>
     </div>
 
-    <!-- ボタン -->
     <button onclick="checkAnswer()">解答ボタン</button>
     <div id="result"></div>
+
   </div>
 
   <script>
