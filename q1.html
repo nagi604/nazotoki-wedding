@@ -40,7 +40,7 @@
       display: flex;
       align-items: center;
       margin-bottom: 1.5em;
-      margin-left: -1em; /* ← 追加：1.5文字分左へ移動 */
+      margin-left: -1em;
     }
 
     .header img {
@@ -51,7 +51,6 @@
     .speech-bubble {
       background-color: #fff;
       padding: 0.5em 1em 0.5em 0.5em;
-      text-indent: 0em;
       margin-left: 0em;
       border-radius: 10px;
       position: relative;
@@ -79,15 +78,19 @@
       margin-bottom: 0.8em;
     }
 
-    label {
+    .form-group {
+      margin-top: 1em;
+    }
+
+    .form-group label {
       display: block;
       margin-top: 1em;
       font-weight: bold;
     }
 
-    input[type="text"] {
-      width: 100%;
-      padding: 10px;
+    .form-group input[type="text"] {
+      width: 85%;
+      padding: 6px;
       font-size: 1rem;
       border: 2px solid #ccc;
       border-radius: 8px;
@@ -96,13 +99,13 @@
       transition: border-color 0.3s, background-color 0.3s;
     }
 
-    input[type="text"]:focus {
+    .form-group input[type="text"]:focus {
       border-color: #f4bc42;
       background-color: #fff;
       outline: none;
     }
 
-    button {
+    .form-group button {
       margin-top: 1.5em;
       padding: 12px 20px;
       font-size: 1rem;
@@ -115,7 +118,7 @@
       transition: background-color 0.3s;
     }
 
-    button:hover {
+    .form-group button:hover {
       background-color: #e0a821;
     }
 
@@ -129,13 +132,12 @@
 <body>
 
   <div class="container">
-
     <!-- キャラクターと吹き出し -->
     <div class="header">
       <img src="RY.png" alt="キャラクター" />
       <div class="speech-bubble">
         <p>プロポーズの日のデート場所を知るには</p>
-       <p>「①②③の④⑤⑥を⑦⑧⑨」</p>
+        <p>「①②③の④⑤⑥を⑦⑧⑨」</p>
       </div>
     </div>
 
@@ -149,21 +151,20 @@
       <p>新婦の嫌いな食べ物＝〇〇<strong>③</strong></p>
     </div>
 
-    <!-- 入力欄 -->
-    <label for="ans1">①</label>
-    <input type="text" id="ans1" placeholder="ひらがな1文字" maxlength="1" />
+    <!-- 解答欄とボタンをまとめる -->
+    <div class="form-group">
+      <label for="ans1">①</label>
+      <input type="text" id="ans1" placeholder="ひらがな1文字" maxlength="1" />
 
-    <label for="ans2">②</label>
-    <input type="text" id="ans2" placeholder="ひらがな1文字" maxlength="1" />
+      <label for="ans2">②</label>
+      <input type="text" id="ans2" placeholder="ひらがな1文字" maxlength="1" />
 
-    <label for="ans3">③</label>
-    <input type="text" id="ans3" placeholder="ひらがな1文字" maxlength="1" />
+      <label for="ans3">③</label>
+      <input type="text" id="ans3" placeholder="ひらがな1文字" maxlength="1" />
 
-    <!-- ボタン -->
-    <button onclick="checkAnswer()">解答ボタン</button>
-
-    <!-- 結果表示 -->
-    <div id="result"></div>
+      <button onclick="checkAnswer()">解答ボタン</button>
+      <div id="result"></div>
+    </div>
   </div>
 
   <script>
