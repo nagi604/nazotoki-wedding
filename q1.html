@@ -1,56 +1,152 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Q1</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q1 謎解き</title>
   <style>
-    body {
-      font-size: 1.3rem;
-      text-align: center;
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: sans-serif;
+    background-image: url('haikei.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #333;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.85); /* 半透明の白背景で読みやすく */
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
       padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    img {
-      max-width: 100%;
-      height: auto;
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
     }
-    input {
-      font-size: 1.2rem;
-      width: 3rem;
-      text-align: center;
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 5px;
       background-color: #eee;
-      margin: 5px;
     }
     button {
-      font-size: 1.2rem;
-      padding: 10px 20px;
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 18px;
+      background-color: #fff;
+      border: 2px solid #555;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: red;
     }
   </style>
 </head>
 <body>
-  <img src="img1.jpg" alt="Q1画像" />
-  <p>
-    ①<input id="a1" maxlength="1">　
-    ②<input id="a2" maxlength="1">　
-    ③<input id="a3" maxlength="1">
-  </p>
-  <button onclick="checkAnswer()">答える</button>
-  <p id="result"></p>
+
+  <!-- 左上のアイコン＋吹き出し -->
+  <div style="display: flex; align-items: center; margin-top: 10px; margin-left: 10px;">
+    <!-- 左の画像 -->
+    <img src="RY.png" alt="キャラクター" style="
+      width: 25%;
+      max-width: 150px;
+      height: auto;
+      border-radius: 8px;
+    ">
+
+    <!-- 吹き出し -->
+    <div style="
+      background-color: #fff;
+      padding: 10px 15px;
+      margin-left: 10px;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    ">
+      Q1
+      <div style="
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid #fff;
+      "></div>
+    </div>
+  </div>
+
+  <!-- 本文（container） -->
+  <div class="container" style="margin-top: 30px;">
+
+    <p>告白した日のデート場所＝〇〇〇<strong>①</strong>〇〇〇〇〇〇〇</p>
+    <p>新郎の嫌いな食べ物＝〇〇〇<strong>②</strong>〇</p>
+    <p>新婦の嫌いな食べ物＝〇〇<strong>③</strong></p>
+
+    <label for="ans1">①</label>
+    <input type="text" id="ans1" placeholder="ひらがな一文字入力">
+
+    <label for="ans2">②</label>
+    <input type="text" id="ans2" placeholder="ひらがな一文字入力">
+
+    <label for="ans3">③</label>
+    <input type="text" id="ans3" placeholder="ひらがな一文字入力">
+
+    <button onclick="checkAnswer()">解答ボタン</button>
+
+    <div id="result"></div>
+  </div>
 
   <script>
     function checkAnswer() {
-      const a1 = document.getElementById('a1').value.trim();
-      const a2 = document.getElementById('a2').value.trim();
-      const a3 = document.getElementById('a3').value.trim();
+      const ans1 = document.getElementById('ans1').value.trim();
+      const ans2 = document.getElementById('ans2').value.trim();
+      const ans3 = document.getElementById('ans3').value.trim();
+
+      const a1 = ans1.charAt(0);
+      const a2 = ans2.charAt(0);
+      const a3 = ans3.charAt(0);
+
       if (a1 === 'こ' && a2 === 'も' && a3 === 'じ') {
-        document.getElementById('result').textContent = '正解！次へ進みます...';
+        document.getElementById('result').style.color = 'green';
+        document.getElementById('result').textContent = '正解！Q2に進みます...';
         setTimeout(() => {
           location.href = 'q2.html';
-        }, 1000);
+        }, 1500);
       } else {
+        document.getElementById('result').style.color = 'red';
         document.getElementById('result').textContent = '不正解です。もう一度挑戦してください。';
       }
     }
   </script>
+
 </body>
 </html>
