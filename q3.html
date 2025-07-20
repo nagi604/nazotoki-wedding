@@ -2,52 +2,147 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Q1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Q3 謎解き</title>
   <style>
     body {
-      font-size: 1.3rem;
-      text-align: center;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-image: url('haikei.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 90vw;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
       padding: 20px;
+      background-color: rgba(255, 255, 255, 0.85);
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
     }
-    img {
-      max-width: 100%;
+
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5em;
+    }
+
+    .header img {
+      width: 25%;
       height: auto;
+      border-radius: 8px;
     }
-    input {
-      font-size: 1.2rem;
-      width: 3rem;
-      text-align: center;
+
+    .speech-bubble {
+      background-color: #fff;
+      padding: 0.5em 1em;
+      margin-left: 1em;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      font-size: 1rem;
+    }
+
+    .speech-bubble::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid #fff;
+    }
+
+    label {
+      display: block;
+      margin-top: 1em;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-top: 5px;
       background-color: #eee;
-      margin: 5px;
+      box-sizing: border-box;
+      text-align: center;
     }
+
     button {
-      font-size: 1.2rem;
-      padding: 10px 20px;
+      margin-top: 1.5em;
+      padding: 12px 20px;
+      font-size: 1rem;
+      background-color: #fff;
+      border: 2px solid #555;
+      border-radius: 8px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #result {
+      margin-top: 1em;
+      font-weight: bold;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <img src="img1.jpg" alt="Q1画像" />
-  <p>
-    ⑦<input id="a1" maxlength="1">　
-    ⑧<input id="a2" maxlength="1">　
-    ⑨<input id="a3" maxlength="1">
-  </p>
-  <button onclick="checkAnswer()">答える</button>
-  <p id="result"></p>
+  <div class="container">
+    <!-- キャラクターと吹き出し -->
+    <div class="header">
+      <img src="RY.png" alt="キャラクター" />
+      <div class="speech-bubble">
+        「プロポーズの日のデート場所」を知るには、<br>
+        「こもじのえいじを⑦⑧⑨」
+      </div>
+    </div>
+
+    <p>最初に割り振られたひらがなの中で新郎、新婦の名前に含まれる文字を<br>
+    除いて文が成り立つように並び替えてください</p>
+
+    <label for="a7">⑦</label>
+    <input type="text" id="a7" maxlength="1" placeholder="ひらがな一文字入力" />
+
+    <label for="a8">⑧</label>
+    <input type="text" id="a8" maxlength="1" placeholder="ひらがな一文字入力" />
+
+    <label for="a9">⑨</label>
+    <input type="text" id="a9" maxlength="1" placeholder="ひらがな一文字入力" />
+
+    <button onclick="checkAnswer()">解答ボタン</button>
+    <div id="result"></div>
+  </div>
 
   <script>
     function checkAnswer() {
-      const a1 = document.getElementById('a1').value.trim();
-      const a2 = document.getElementById('a2').value.trim();
-      const a3 = document.getElementById('a3').value.trim();
-      if (a1 === 'さ' && a2 === 'が' && a3 === 'せ') {
-        document.getElementById('result').textContent = '正解！次へ進みます...';
+      const a7 = document.getElementById('a7').value.trim();
+      const a8 = document.getElementById('a8').value.trim();
+      const a9 = document.getElementById('a9').value.trim();
+
+      if (a7 === 'さ' && a8 === 'が' && a9 === 'せ') {
+        document.getElementById('result').style.color = 'green';
+        document.getElementById('result').textContent = '正解！最後のページへ進みます...';
         setTimeout(() => {
-          location.href = 'q2.html';
-        }, 1000);
+          location.href = 'q4.html';
+        }, 1500);
       } else {
+        document.getElementById('result').style.color = 'red';
         document.getElementById('result').textContent = '不正解です。もう一度挑戦してください。';
       }
     }

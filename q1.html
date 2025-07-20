@@ -1,149 +1,173 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Q1 謎解き</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
   <style>
-  body {
-    margin: 0;
-    padding: 20px;
-    font-family: sans-serif;
-    background-image: url('haikei.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    color: #333;
-    font-size: 18px;
-    line-height: 1.6;
-  }
-  .container {
-    max-width: 600px;
-    margin: 0 auto;
-    background: rgba(255, 255, 255, 0.85); /* 半透明の白背景で読みやすく */
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      background-image: url('haikei.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      font-size: 16px;
+      color: #333;
+    }
+
     .container {
+      max-width: 90vw;
+      width: 100%;
       max-width: 600px;
-      margin: 0 auto;
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      margin: 5vh auto;
+      padding: 24px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
+
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5em;
     }
+
+    .header img {
+      width: 25%;
+      height: auto;
+    }
+
+
+    .speech-bubble {
+      background-color: #fff;
+      padding: 0.5em 1em;
+      margin-left: 1em;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      font-size: 1rem;
+    }
+
+    .speech-bubble::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid #fff;
+    }
+
+    .question p {
+      font-size: 1.1rem;
+      margin-bottom: 0.8em;
+    }
+
     label {
       display: block;
-      margin-top: 15px;
+      margin-top: 1em;
       font-weight: bold;
     }
+
     input[type="text"] {
       width: 100%;
       padding: 10px;
-      font-size: 18px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
       margin-top: 5px;
-      background-color: #eee;
+      background-color: #f9f9f9;
+      transition: border-color 0.3s, background-color 0.3s;
     }
-    button {
-      margin-top: 20px;
-      padding: 12px 20px;
-      font-size: 18px;
+
+    input[type="text"]:focus {
+      border-color: #f4bc42;
       background-color: #fff;
-      border: 2px solid #555;
+      outline: none;
+    }
+
+    button {
+      margin-top: 1.5em;
+      padding: 12px 20px;
+      font-size: 1rem;
+      background-color: #f4bc42;
+      color: #333;
+      border: none;
       border-radius: 8px;
       cursor: pointer;
-    }
-    #result {
-      margin-top: 20px;
       font-weight: bold;
-      color: red;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #e0a821;
+    }
+
+    #result {
+      margin-top: 1em;
+      font-weight: bold;
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
 
-  <!-- 左上のアイコン＋吹き出し -->
-  <div style="display: flex; align-items: center; margin-top: 10px; margin-left: 10px;">
-    <!-- 左の画像 -->
-    <img src="RY.png" alt="キャラクター" style="
-      width: 25%;
-      max-width: 150px;
-      height: auto;
-      border-radius: 8px;
-    ">
+  <div class="container">
 
-    <!-- 吹き出し -->
-    <div style="
-      background-color: #fff;
-      padding: 10px 15px;
-      margin-left: 10px;
-      border-radius: 10px;
-      position: relative;
-      box-shadow: 0 0 5px rgba(0,0,0,0.2);
-    ">
-      Q1
-      <div style="
-        content: '';
-        position: absolute;
-        left: -10px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 0;
-        height: 0;
-        border-top: 10px solid transparent;
-        border-bottom: 10px solid transparent;
-        border-right: 10px solid #fff;
-      "></div>
+    <!-- キャラクターと吹き出し -->
+    <div class="header">
+      <img src="RY.png" alt="キャラクター" />
+      <div class="speech-bubble">
+        「プロポーズの日のデート場所」を知るには、<br>
+        「①②③の④⑤⑥を⑦⑧⑨」
+      </div>
     </div>
-  </div>
 
-  <!-- 本文（container） -->
-  <div class="container" style="margin-top: 30px;">
+    <!-- 問題文 -->
+    <div class="question">
+      <p>告白した日のデート場所＝〇〇〇<strong>①</strong>〇〇〇〇〇〇〇</p>
+      <p>新郎の嫌いな食べ物＝〇〇〇<strong>②</strong>〇</p>
+      <p>新婦の嫌いな食べ物＝〇〇<strong>③</strong></p>
+    </div>
 
-    <p>告白した日のデート場所＝〇〇〇<strong>①</strong>〇〇〇〇〇〇〇</p>
-    <p>新郎の嫌いな食べ物＝〇〇〇<strong>②</strong>〇</p>
-    <p>新婦の嫌いな食べ物＝〇〇<strong>③</strong></p>
-
+    <!-- 入力欄 -->
     <label for="ans1">①</label>
-    <input type="text" id="ans1" placeholder="ひらがな一文字入力">
+    <input type="text" id="ans1" placeholder="ひらがな1文字" maxlength="1" />
 
     <label for="ans2">②</label>
-    <input type="text" id="ans2" placeholder="ひらがな一文字入力">
+    <input type="text" id="ans2" placeholder="ひらがな1文字" maxlength="1" />
 
     <label for="ans3">③</label>
-    <input type="text" id="ans3" placeholder="ひらがな一文字入力">
+    <input type="text" id="ans3" placeholder="ひらがな1文字" maxlength="1" />
 
+    <!-- ボタン -->
     <button onclick="checkAnswer()">解答ボタン</button>
 
+    <!-- 結果表示 -->
     <div id="result"></div>
   </div>
 
   <script>
     function checkAnswer() {
-      const ans1 = document.getElementById('ans1').value.trim();
-      const ans2 = document.getElementById('ans2').value.trim();
-      const ans3 = document.getElementById('ans3').value.trim();
+      const a1 = document.getElementById('ans1').value.trim();
+      const a2 = document.getElementById('ans2').value.trim();
+      const a3 = document.getElementById('ans3').value.trim();
 
-      const a1 = ans1.charAt(0);
-      const a2 = ans2.charAt(0);
-      const a3 = ans3.charAt(0);
+      const result = document.getElementById('result');
 
       if (a1 === 'こ' && a2 === 'も' && a3 === 'じ') {
-        document.getElementById('result').style.color = 'green';
-        document.getElementById('result').textContent = '正解！Q2に進みます...';
+        result.style.color = 'green';
+        result.textContent = '正解！Q2に進みます...';
         setTimeout(() => {
           location.href = 'q2.html';
         }, 1500);
       } else {
-        document.getElementById('result').style.color = 'red';
-        document.getElementById('result').textContent = '不正解です。もう一度挑戦してください。';
+        result.style.color = 'red';
+        result.textContent = '不正解です。もう一度挑戦してください。';
       }
     }
   </script>

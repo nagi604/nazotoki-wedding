@@ -6,24 +6,86 @@
   <title>謎解きスタート</title>
   <style>
     body {
-      font-size: 1.3rem;
-      text-align: center;
+      font-family: 'sans-serif';
+      margin: 0;
+      padding: 0;
+      background: url('haikei.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    .container {
+      max-width: 90vw;
+      margin: 0 auto;
       padding: 20px;
+      text-align: center;
     }
-    img {
-      max-width: 100%;
-      height: auto;
+
+    .image-block {
+      margin-top: 10px;
     }
-    button {
-      font-size: 1.2rem;
+
+    .speech-bubble {
+      display: inline-block;
+      position: relative;
+      background: #fff;
+      border-radius: 20px;
       padding: 10px 20px;
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-left: 10px;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 10px solid transparent;
+      border-right-color: #fff;
+    }
+
+    .text-box {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      padding: 20px;
       margin-top: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .highlight {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .start-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: #fff;
+      border: 2px solid #333;
+      border-radius: 8px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <img src="img0.jpg" alt="スタート画像" />
-  <br>
-  <button onclick="location.href='q1.html'">Q1に進む</button>
+  <div class="container">
+    <div class="image-block">
+      <img src="RY.png" alt="キャラクター" style="width: 30%; vertical-align: middle;">
+      <div class="speech-bubble">謎解きスタート！</div>
+    </div>
+
+    <div class="text-box">
+      <p>「プロポーズの日のデート場所」を知るには、</p>
+      <p class="highlight">「①②③の④⑤⑥を⑦⑧⑨」</p>
+      <p>3つの謎を解くと①～⑨までがわかるようになっています</p>
+      <button class="start-button" onclick="location.href='q1.html'">Q1に進む</button>
+    </div>
+  </div>
 </body>
 </html>
