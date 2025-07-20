@@ -1,23 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>問題2</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Q1</title>
+  <style>
+    body {
+      font-size: 1.3rem;
+      text-align: center;
+      padding: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    input {
+      font-size: 1.2rem;
+      width: 3rem;
+      text-align: center;
+      background-color: #eee;
+      margin: 5px;
+    }
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+  <img src="img1.jpg" alt="Q1画像" />
+  <p>
+    ④<input id="a1" maxlength="1">　
+    ⑤<input id="a2" maxlength="1">　
+    ⑥<input id="a3" maxlength="1">
+  </p>
+  <button onclick="checkAnswer()">答える</button>
+  <p id="result"></p>
+
   <script>
     function checkAnswer() {
-      const input = document.getElementById("answer").value.trim();
-      if (input === "ぁよと") {
-        window.location.href = "q3.html";
+      const a1 = document.getElementById('a1').value.trim();
+      const a2 = document.getElementById('a2').value.trim();
+      const a3 = document.getElementById('a3').value.trim();
+      if (a1 === 'え' && a2 === 'い' && a3 === 'じ') {
+        document.getElementById('result').textContent = '正解！次へ進みます...';
+        setTimeout(() => {
+          location.href = 'q2.html';
+        }, 1000);
       } else {
-        alert("不正解です");
+        document.getElementById('result').textContent = '不正解です。もう一度挑戦してください。';
       }
     }
   </script>
-</head>
-<body>
-  <h1>問題2</h1>
-  <img src="img2.jpg" alt="画像2" width="400"><br>
-  <input type="text" id="answer" placeholder="こたえ">
-  <button onclick="checkAnswer()">送信</button>
 </body>
 </html>
