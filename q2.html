@@ -40,9 +40,8 @@
       display: flex;
       align-items: center;
       margin-bottom: 1.5em;
-      margin-left: -1em; /* ← 追加：1.5文字分左へ移動 */
+      margin-left: -1em;
     }
-
 
     .header img {
       width: 25%;
@@ -93,7 +92,8 @@
       width: 80px;
       height: 80px;
       background: #add8e6;
-      clip-path: polygon(50% 0, 100% 40%, 75% 40%, 75% 100%, 25% 100%, 25% 40%, 0% 40%);
+      /* ↓ 正しい「下向き矢印」の形に修正 */
+      clip-path: polygon(50% 100%, 100% 60%, 75% 60%, 75% 0%, 25% 0%, 25% 60%, 0% 60%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -104,12 +104,16 @@
     }
 
     .arrow.up {
-      transform: rotate(180deg);
+      transform: rotate(180deg); /* 矢印を上に向ける */
     }
 
-    .arrow .heart {
-      transform: rotate(180deg);
+    .arrow span {
       display: inline-block;
+      transform: rotate(0deg); /* 通常 */
+    }
+
+    .arrow.up span {
+      transform: rotate(180deg); /* 中の文字を逆回転で補正 */
     }
 
     input[type="text"] {
@@ -161,19 +165,19 @@
     <div class="title">Q2</div>
 
     <!-- 問題文 -->
-    <p>下の3つの矢印が示す言葉を解答してください</p>
+    <p>下の3つの矢印が示す言葉は何でしょう？</p>
 
     <div class="arrow-row">
       <div class="arrow-group">
-        <div class="arrow">♪</div>
+        <div class="arrow"><span>♪</span></div>
         <input type="text" id="a4" maxlength="1" placeholder="④">
       </div>
       <div class="arrow-group">
-        <div class="arrow up"><span class="heart">♡</span></div>
+        <div class="arrow up"><span>♡</span></div>
         <input type="text" id="a5" maxlength="1" placeholder="⑤">
       </div>
       <div class="arrow-group">
-        <div class="arrow">（笑）</div>
+        <div class="arrow"><span>（笑）</span></div>
         <input type="text" id="a6" maxlength="1" placeholder="⑥">
       </div>
     </div>
