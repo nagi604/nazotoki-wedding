@@ -92,7 +92,6 @@
       width: 80px;
       height: 80px;
       background: #add8e6;
-      /* ↓ 正しい「下向き矢印」の形に修正 */
       clip-path: polygon(50% 100%, 100% 60%, 75% 60%, 75% 0%, 25% 0%, 25% 60%, 0% 60%);
       display: flex;
       align-items: center;
@@ -104,16 +103,23 @@
     }
 
     .arrow.up {
-      transform: rotate(180deg); /* 矢印を上に向ける */
+      transform: rotate(180deg);
     }
 
     .arrow span {
       display: inline-block;
-      transform: rotate(0deg); /* 通常 */
+      transform: rotate(0deg);
     }
 
     .arrow.up span {
-      transform: rotate(180deg); /* 中の文字を逆回転で補正 */
+      transform: rotate(180deg);
+    }
+
+    .arrow.vertical {
+      writing-mode: vertical-rl;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.2;
     }
 
     input[type="text"] {
@@ -177,7 +183,7 @@
         <input type="text" id="a5" maxlength="1" placeholder="⑤">
       </div>
       <div class="arrow-group">
-        <div class="arrow"><span>（笑）</span></div>
+        <div class="arrow vertical">（笑）</div>
         <input type="text" id="a6" maxlength="1" placeholder="⑥">
       </div>
     </div>
